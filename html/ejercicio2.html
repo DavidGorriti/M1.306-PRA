@@ -14,65 +14,109 @@
 		<a href="bibliografia.html">Bibliografía</a>
 	</div>
     <div class="content">
-		<h1>Ejercicio 2: Contenido dinámico</h1>
+		<h1>Ejercicio 2: Práctica de streaming de un vídeo local</h1>
 		
-		<ul><li><b>Vídeo asset-02.mp4</b></li></ul>
-		<video width="400" controls>
-			<source src="../video/asset-02.mp4" type="video/mp4">
-		</video>
+		<h2>Tarea 2.1: Codificación del vídeo</h2>
 
-		<h2>Tareas 2.1, 2.2 y 2.3</h2>
+		<p>El <strong>vídeo original</strong> utilizado en este ejercicio es <strong>el mismo del ejercicio 1, "Practica_H.265.mp4",</strong> cuyas caracterísitcas se pueden consultar en el apartado "Tarea 1.1: Codificación de los vídeos".</p>
 		
-		<p>(Tarea 2.1) Las <b>características principales</b> del vídeo son:</p>
+		<p>A continuación, se detallan las <strong>principales configuraciones realizadas en <i>Avidemux</i></strong> para obtener el vídeo "clip01.mkv" con el formato definido en el enunciado.</p>
+
 		<ul>
-			<li><b>Tamaño:</b> 1920 x 1080 píxeles</li>
-			<li><b>Cuadros/segundo:</b> 30,005 fps = 30 (redondeado)</li>
-			<li><b>Duración:</b> 10,398 segundos</li>
-			<li><b>Tamaño fichero:</b> 27.713.699 B</li>
+			<li><strong>Salida de video:</strong> Mpeg4 AVC (x264).</li>
+			<li><strong>Salida de audio:</strong> MP3 (lame).</li>
+			<li><strong>Formato de salida:</strong> MKV Muxer.</li>
+			<li><strong>Velocidad de frame:</strong> No se indica nada en el enunciado, por lo que no se ha modificado. El original es 60 fps.</li>
+			<li><strong>Resolución:</strong> No se modifica, la original es 1080p.</li>
+			<li><strong>Modo de codificación:</strong> Tasa de bits media (dos pasadas).</li>
+			<li><strong>Tasa de bits media:</strong> 5.000 kbps.</li>
 		</ul>
-		<p>Para <b>calcular el tamaño sin comprimir </b>se puede
-			utilizar el tamaño por segundo de la tarea 1.2, ya que el tamaño en píxeles y
-			cuadros/segundo son iguales:
-		</p>
+
+		<img width=650 src="../img/Ejercicio2/Tarea 2.1 - CodificaciónAvidemux.jpg">
+
+		<p>En estas imágenes de <strong><i>MediaInfo</i></strong> se puede observar que el <strong>resultado obtenido es el indicado</strong></p>. 
+	
+		<img width=1000 src="../img/Ejercicio2/Tarea 2.1 - MediaInfo1.jpg">
+		<img width=320 src="../img/Ejercicio2/Tarea 2.1 - MediaInfo2.jpg">
+		<img width=320 src="../img/Ejercicio2/Tarea 2.1 - MediaInfo3.jpg">
+		
+		<diV style="display: flex;">
+			<div>
+				<ul><li><strong>Vídeo original:</strong> Practica_H.265.mp4</li></ul>
+				<video width="600" poster="../img/VideoPoster.jpg" controls>
+					<source src="../video/Practica_H.265.mp4" type="video/mp4">
+				</video>
+			</div>
+			<div>
+				<ul><li><strong>Vídeo generado:</strong> clip01.mkv</li></ul>
+				<video width="600" poster="../img/VideoPoster.jpg" controls>
+					<source src="../video/clip01.mkv" type="video/mp4">
+				</video>
+			</div>
+		</diV>
+		
+		<h2>Tareas 2.2 y 2.3: Configuración streaming</h2>
+
+		<h3>Configuración VLC</h3>
+
+		<p>En las siguientes imágenes se puede observar la <strong>configuración</strong> realizada en la instancia del <strong>emisor y receptor</strong>. Como mi equipo no es muy potente, con el codec de emisión "H.264+MP3 (MP4)" la transmisión se entrecortaba, por lo que he configurado el <strong>codec de emisión "H.264+MP3 (TS)"</strong>.</p>
+		
+		<ul><li><strong>Emisor:</strong></li></ul>
+		<img width=500 src="../img/Ejercicio2/Tarea 2.2 - Config emisor1.jpg">
+		<img width=500 src="../img/Ejercicio2/Tarea 2.2 - Config emisor2.jpg">
+		<img width=500 src="../img/Ejercicio2/Tarea 2.2 - Config emisor3.jpg">
+		<img width=500 src="../img/Ejercicio2/Tarea 2.2 - Config emisor4.jpg">
+
+		<p>Tal y como aparece en la última imagen, las <strong>características principales de la transcodificación</strong> que se realizará son:</p>
+
 		<ul>
-			<li><b>Tamaño total:</b> 186.624.000 B/s * 10.398 s = <b>1.940.516.352 B</b></li>
+			<li><strong>Codec de vídeo:</strong> H.264</li>
+			<li><strong>Codec de audio:</strong> mpga</li>
+			<li><strong>Bitrate de vídeo:</strong> 800 kbps</li>
+			<li><strong>Bitrate de audio:</strong> 128 kbps</li>
+			<li><strong>Frecuencia de muestreo de audío:</strong> 44100 Hz</li>
 		</ul>
+		
+		<ul><li><strong>Receptor:</strong></li></ul>
+		<img width=500 src="../img/Ejercicio2/Tarea 2.2 - Config receptor.jpg">
+
+		<h3>VLC de emisión</h3>
+		<img width=1000 src="../img/Ejercicio2/Tarea 2.2 - Info emisor.jpg">
+
+		<h3>VLC de recepción</h3>
+		<img width=1000 src="../img/Ejercicio2/Tarea 2.3 - Info receptor.jpg">
+
+		<p>Comparando la información del VLC de emisión con el de recpeción, se observa que el vídeo emitido ha sido transformado antes de ser recibido. Además, comprobando los datos
+			del VLC de recepciópn con las caracterísitcas de la transcodificación, se confirma que la <strong>codificación se realizar correctamente</strong>.</p>
 			
-		<p>(Tarea 2.2) <b>Contrastando</b> la información <b>con MediaInfo</b>, el tamaño en píxeles y la duración (original) coinciden, los cuadros segundo, en cambio, no del todo.
-			Avidemux da un valor de 30,005 fps, mientras que MediaInfo da 30 fps de media, y 29,880 fps y 30,090 fps mínimo y máximo, respectivamente. Además,
-			Avidemux, no da información sobre el tamaño del fichero, y menos de la pista de vídeo, a diferencia de MediaInfo, que ofrece ambas.
+		<p>Por un lado, en la pestaña de información del coded se puede ver que <strong>los codecs de audio y vídeo, el bitrate de audio y la frecuencia de muestreo de audio coinciden</strong> con la 
+			transcodificación definida. Por otro lado, en la pestaña de estadísticas, se observa que el <strong>valor medio de la tasa de bits del contenido</strong> es 980 kbps, <strong>cercano a los 928 kbps (800 de vídeo + 128 de audio) definidos</strong>.</p>
+
+		<h2>Tarea 2.4: Pausar VLC de emisión</h2>
+
+		<p>Tras pausar el VL emisor, el vídeo del receptor tarda al rededor de <strong>3 segundos</strong> en parar. Esto se debe a varios factores.</p> 
+		
+		<p>Una de las razones principales es el <strong>buffer de datos del receptor</strong>. El receptor mantiene un buffer de datos para amortiguar el efecto del jitter y no pausar el vídeo en los momentos en que la llegada de datos es más lenta.
+		Cuando el emisor deja de enviar datos, el receptor no parará hasta que se vacíe su buffer y no tenga más datos de reproducir.</p>
+
+		<p>Otros factor que puede afectar son los <strong>paquetes que ya están en tránsito</strong> a cuando se pausa la emisión. El receptor puede recibir paquetes enviados justo antes de pausar la emisión,
+			añadirlos al buffer y reproducirlos, aumentando el tiempo.
 		</p>
 		
-		<p>(Tarea 2.3) Para calcular el<b> factor de compresión</b>, aunque sería más adecuado utilizar el tamaño comprimido de solamente la pista de video (en vez del fichero completo), se utilizará el del fichero completo para poder compararlo con el vídeo del primer ejercicio.
-		</p>
-		<ul>
-			<li><b>FC</b> = 1.940.516.352 B / 27.713.699 B = <b>70</b></li>
-		</ul>
-				
-		<h2>Tarea 2.4</h2>
-		<p>El <b>primer fotograma</b> es de tipo <b>“I” (intracode/fotogramas clave)</b> y el <b>segundo</b> de <b>tipo
-			“P” (predictiva)</b>. En el clip hay <b>11 fotogramas de tipo “I</b>”.
-		</p>
-		<p>La estructura <b>GOP</b> de este clip es <b>N = 30</b>
-			(distancia entre dos fotogramas I) y <b>M = 1</b> (distancia entre fotograma I
-			y el siguiente fotograma I o P).
-		</p>
-		
-		<h2>Tarea 2.5</h2>
-		<p><b>No se aprecian diferencias</b> sustanciales entre ambos
-			clips. Las características principales y la estructura GOP que se han comparado
-			son iguales. Se han analizado otros datos (espacio de color, submuestreo, etc.)
-			y también coinciden.
-		</p>
-		<p>Hay una <b>ligera diferencia en el factor de compresión</b>
-			(1,2 de diferencia), pero tiene que ver con que para su cálculo se haya
-			utilizado el tamaño comprimido del fichero completo, en vez de utilizar
-			solamente el del clip de video. Se ha comprobado en MediaInfo que en el video
-			<i>asset-01.mp4</i> el tamaño de la pista de video es el 95%
-			del total (26.738.688 B), y en <i>asset-02.mp4</i> el 94% (26.004.685 B).
-			Utilizando esos valores, los factores de compresión obtenidos son 74,9 para <i>asset-01.mp4</i>
-			y 74,6 para <i>asset-02.mp4</i>, prácticamente iguales.
-		</p>
+		<h2>Tarea 2.5: Compresión de vídeo emitido</h2>
+
+		<img width=1500 src="../img/Ejercicio2/Tarea 2.5 - Emisor-Receptor.jpg">
+
+		<p>Para el <strong>cálculo de la compresión</strong> que se está realizando se ha partiendo de los datos estadísticos del streaming.</p>
+
+		<p>El <strong>tamaño del vídeo emitido</strong> se ha extraído de "Tamaño de datos del medio" de las estadísticas de emisión, 12.724 KiB = <strong>13.029.376 B</strong></p>
+
+		<p>El <strong>tamaño del vídeo recibido</strong>, en cambio, al no disoner de dicha información, se ha calculado a partir de la "Tasa de bits del contenido". 
+			Dicho valor varía a lo largo de la emisión, pero los 980 kbps, teniendo en cuenta los datos de la transcodificación, es una tasa razonable. 
+			Como el vídeo dura 20 segundos, el tamaño del vídeo recibido es 980 kbps * 20 s = 19.600 kb -> 19.600 kb * 1.000 / 8 = <strong>2.450.000 B</strong>.</p>
+
+		<p>Por lo tanto, el <strong>factor de compresión</strong> (original (emitido) / comprimido (recibido)) aproximado es 13.029.376 B / 2.450.000 B = <strong>5,32</strong>.</p>
+
     </div>
     <div class="footer">
 		<div class="left">

@@ -36,9 +36,9 @@
 			<li><strong>Tamaño:</strong> 47,9 MB</li>
 		</ul>
 
-		<img width=320 src="../img/Practica_H.265_Info1.jpg">
-		<img width=320 src="../img/Practica_H.265_Info2.jpg">
-		<img width=320 src="../img/Practica_H.265_Info3.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_H.265_Info1.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_H.265_Info2.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_H.265_Info3.jpg">
 
 		<h3>Codificación y resolución para la publicación del vídeo en Web</h3>
 
@@ -79,8 +79,8 @@
 			<li><strong>Tasa de bits media:</strong> 10.000 kbps, más o menos la mitad de la original. Según <a target="_blank" href="https://support.google.com/youtube/answer/2853702?hl=es-419">algunas fuentes</a>, suficiente para la resolución y fps definidos.</li>
 		</ul>
 
-		<img width=650 src="../img/Avidemux_H264_1.jpg">
-		<img width=650 src="../img/Avidemux_H264_2.jpg">
+		<img width=650 src="../img/Ejercicio1/Avidemux_H264_1.jpg">
+		<img width=650 src="../img/Ejercicio1/Avidemux_H264_2.jpg">
 
 		<ul><li><strong>Video generado:</strong> Practica_H.264.mp4</li></ul>
 		<video width="600" poster="../img/VideoPoster.jpg" controls>
@@ -90,9 +90,9 @@
 		<p>En estas imágenes de <strong><i>MediaInfo</i></strong> se puede observar que el <strong>resultado obtenido es el indicado</strong>. 
 		Aunque la <strong>estructura GOP</strong> no aparece reflejada, en <i>Avidemux</i> se ha comprobado que es <strong>variable</strong> a lo largo del vídeo, y se han incluido también fotogramas P.</p>
 
-		<img width=320 src="../img/Practica_H.264_Info1.jpg">
-		<img width=320 src="../img/Practica_H.264_Info2.jpg">
-		<img width=320 src="../img/Practica_H.264_Info3.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_H.264_Info1.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_H.264_Info2.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_H.264_Info3.jpg">
 
 		<p><strong>VP9</strong></p>
 
@@ -107,7 +107,7 @@
 				Como 10.000 kbps es suficiente, se ha vuelto a generar con esta tasa de bits, obteniendo un vídeo de 18,5MB.</li>
 		</ul>
 
-		<img width=600 src="../img/Avidemux_VP1_1.jpg">
+		<img width=600 src="../img/Ejercicio1/Avidemux_VP1_1.jpg">
 
 		<ul><li><strong>Video generado:</strong> Practica_VP9.webm</li></ul>
 		<video width="600" poster="../img/VideoPoster.jpg" controls>
@@ -117,9 +117,9 @@
 		<p>En estas imágenes de <strong><i>MediaInfo</i></strong> se puede observar que el <strong>resultado obtenido es el indicado</strong>. 
 			Aunque la <strong>estructura GOP</strong> no aparece reflejada, en <i>Avidemux</i> se ha comprobado que es <strong>variable</strong> a lo largo del vídeo, y se han incluido también fotogramas P.</p>
 	
-		<img width=320 src="../img/Practica_VP9_Info1.jpg">
-		<img width=320 src="../img/Practica_VP9_Info2.jpg">
-		<img width=320 src="../img/Practica_VP9_Info3.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_VP9_Info1.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_VP9_Info2.jpg">
+		<img width=320 src="../img/Ejercicio1/Practica_VP9_Info3.jpg">
 
 		<h2>Tarea 1.2: HTML5 vídeo</h2>
 
@@ -146,9 +146,14 @@
 
 		<h2>Tarea 1.3: Publicación del vídeo mediante CDN</h2>
 
-		<p>Como esta web con las soluciones de la práctica está publicada en el CDN de Amazon <strong>AWS Amplify</strong>, en el reproductor de la <strong>tarea 1.2</strong> se puede ver el <strong>vídeo publicado</strong>.</P>
+		<p>La versión publicada de esta web con las soluciones de la práctica está alojada en el CDN de Amazon <strong>AWS Amplify</strong>, y aunque en el reproductor de la 
+			<strong>tarea 1.2</strong> se puede ver el <strong>vídeo publicado</strong>, también se ha habilitado en este enlace: 
+			<a target="_blank" href="https://main.d1seeg9m0l9f4q.amplifyapp.com/html/ejercicio1_video.html">https://main.d1seeg9m0l9f4q.amplifyapp.com/html/ejercicio1_video.html</a>
+		</P>
 		
-		<p>La <strong>reproducción</strong> del vídeo, tanto en desktop con coenxión directa con cable, como en móvil con Wifi o 4G, es <strong>instantanea y sin interrupciones</strong>. 
+		
+
+		<p>La <strong>reproducción</strong> del vídeo, tanto en desktop con conexión directa con cable, como en móvil con Wifi o 4G, es <strong>instantanea y sin interrupciones</strong>. 
 		Se ha observado que la descarga del vídeo en móvil ha necesitado más tiempo, pero como se realiza en pequeñas partes y se guardan en el buffer, la demora en el inicio es despreciable y su reproducción no se interrumpe.</p>
 
 		<p>La <strong>reproducción en móvil del vídeo original</strong> HEVC/H.265 de la tarea 1.1, en cambio, sí que <strong>se interrumpe</strong>, ya que es más pesada y necesita descargar más datos.</p>
