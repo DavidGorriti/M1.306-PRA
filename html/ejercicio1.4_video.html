@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>M1.306 - Plataformas de publicación y distribución - Práctica - Ejercicio 1</title>
+    <title>M1.306 - Plataformas de publicación y distribución - Práctica - Ejercicio 1 - Vídeo</title>
 	<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/practica.css">
   </head>
@@ -15,11 +15,12 @@
 	</div>
     <div class="content">
 		
-		<h2>Tarea 1.3: Publicación del vídeo mediante CDN</h2>
+		<h2>Tarea 1.4: Funcionalidades de HTML5 vídeo</h2>
 
-		<video width="1000" poster="../img/VideoPoster.jpg" controls>
+		<video load="lazy" width="600" poster="../img/VideoPoster.jpg" controls muted autoplay>
 			<source src="../video/Practica_VP9.webm" type="video/webm">
 			<source src="../video/Practica_H.264.mp4" type="video/mp4">
+			<track src="../text/MarlikSuge.vtt" kind="captions" label="Subtítulo de ejemplo"></track>
 			El navegador no soporta los formatos de vídeo configurados.
 		</video>
 

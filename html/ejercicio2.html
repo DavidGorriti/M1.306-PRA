@@ -117,6 +117,118 @@
 
 		<p>Por lo tanto, el <strong>factor de compresión</strong> (original (emitido) / comprimido (recibido)) aproximado es 13.029.376 B / 2.450.000 B = <strong>5,32</strong>.</p>
 
+		<h2>Tarea 2.6: Cloud streaming - Servicio adicional</h2>
+
+		<p>El servicio seleccionado es <strong>el streaming de baja latencia de Amazon Interactive Video Service (IVS)</strong>.</p>
+
+		<p>Amazon IVS es un servicio que permite, de manera sencilla, crear canales y comenzar el streaming de <strong>videos en directo de latencia baja</strong>,
+			distribuyendo videos a escala en una amplia gama de dispositivos y plataformas y creando experiencias interactivas integradas en sitios web y aplicaciones.
+		</p>
+
+		<p>La <strong>entrega de contenido</strong> se puede realizar con dos <strong>formas distintas</strong>, que afectan directamente a su latencia 
+			(momento en que la cámara captura una transmisión hasta que aparece en la pantalla del espectador):</p>
+		<ul>
+			<li><strong>Latencia baja:</strong> Mediante los canales de IVS, que entregan el vídeo con una latencia inferior a 5 segundos.</li>
+			<li><strong>Latencia en tiempo real:</strong> Mediante las fases de IVS la latencia es inferior a 300ms. Si la fase se transmite a un canal, se entregara con latencia baja.</li>
+		</ul>
+
+		<p>En cualquier caso, son latencias mucho más bajas que un transmisión OTT (over-the-top) tradicional, en las que pueden llegar a ser de hasta 30 segundos.</p>
+
+		<p>Aunque el <strong>"plano de datos" es global</strong> y las retransmisiones se pueden ver de forma global en todo el mundo, el <strong>"plano de control"
+			es regional</strong>. Es decir, la consola de Amazon IVS, la API y los recursos son independientes en cada región y el usuario debe indicar donde quiere crearlos.
+		</p>
+
+		<p>Amazon IVS soporta <strong>varios protocolos de streaming</strong>:</p>
+		<ul>
+			<li><strong>RTMP:</strong> Real-Time Messagin Protocol, estándar para la transmisión de vídeos en la red.</li>
+			<li><strong>RTMPS:</strong> La versión segura de RTMP, ejecutado sobre TLS.</li>
+			<li><strong>SRT:</strong> Secure Reliable Transport, un nuevo protocolo open-source. Está diseñado para mejorar el streaming en redes poco fiables y proteger
+			ante jitter, perdidas de paquetes y fluctuaciones en el ancho de banda.</li>
+		</ul>
+
+		<p>Se puede y se recomienda utilizar <strong>diferentes niveles de permisos</strong> para las distintas tareas que se pueden realizar en la plataforma:</p>
+		<ul>
+			<li>
+				<strong>Usuario raíz:</strong> Es el usuario propio de la cuenta AWS y se crea automática al registrar una cuenta. Tiene accesos a todos los servicios y recursos de AWS.
+				Se recomiendo utilizarlo solo para tareas que requieran permisos de raíz. 
+			</li>
+			<li>
+				<strong>Usuario administrativo:</strong> Es un usuario con acceso administrativo de <i>IAM Identity Center</i> para las tareas diarias de administración.
+			</li>
+			<li>
+				<strong>Permisos IAM:</strong> Se debe crear una política de <i>AWS Identity and Access Management (IAM)</i> o utilizar una existente para proporcionar 
+				permisos básicos a los usuarios, como crear un canal en Amazon IVS, obtener información de streaming, etc.
+			</li>
+		</ul>
+
+		<p>El proceso de <strong>implementación</strong> de un streaming básico en IVS consta de los siguientes <strong>pasos principales</strong>:</p>
+		<ol>
+			<li>
+				<strong>Crear una cuenta de AWS:</strong> 
+				Es necesario crear una cuenta nueva o utilizar una cuenta existente, pero debe estar en una región de AWS compatible con Amazon IVS.
+			</li>
+			<li>
+				<strong>Configurar usuarios:</strong>
+				Tal y como se ha indicade anteriornmente, hay que configurar el usuario raíz, el usuario administrativo y los permisos de IAM para una correcta gestión de usuarios y permisos.
+			</li>
+			<li>
+				<strong>Crear un canal:</strong>
+				Un canal almacena información de la configuración relacionada con la transmisión en directo. Se definen los siguientes elementos:
+				<ul>
+					<li><strong>Servidor de incorporación:</strong> Componente específico de Amazon IVS que recibe la transmisión, junto con un protocolo de incorporación RTMPS o RTMP.</li>
+					<li><strong>Clave de transmisión:</strong> Se trata de una clave que se genera al crear el canal y se utiliza para autorizar el streaming en él.</li>
+					<li><strong>URL de reproducción:</strong> URL de acceso a la reproducción del canal. Amazon IVS selecciona automáticamente la mejor ubicación de la red global para la entrega del contenido.</li>
+				</ul>
+			</li>
+
+			<li>
+				<strong>Configurar el software de streaming:</strong>
+				Se puede configurar el stream de tres maneras:
+				<ul>
+					<li><strong>SDK nativo de emisión:</strong> Soporta RTMPS y es el recomendado para entornos productivos. Existen SDKs para desarrollar aplicaciones en 
+					Android y iOS, y un SDK para aplicaciones web utilizando WebRTC.</li>
+					<li><strong>Consola de Amazon IVS:</strong> Desde la <a target="_blank" href="https://console.aws.amazon.com/ivs">consola de Amazon IVS</a> se puede iniciar
+					un stream de manera sencilla permitiendo a la consola acceder a la cámara y micrófono del dispositivo. Consume recursos, por lo que puede incurrir en gastos.
+					Está pensado para testing.</li>
+					<li><strong>Otros software y codificadores de streaming:</strong> Se pueden utilizar otros codificadores mientras soporten los protocolos RTMP, RTMPS o SRT.
+					Por ejemplo, streaming con "OBS Studio" utilizando RTMPS o SRT o envío de videos grabado con "FFmpeg" utilizando RTMPS o SRT. En cualquier caso, es necesario
+					configurar, entre otro parámetros, la clave de transmisión, la resolución de salida y el bitrate.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Visualizar la transmisión:</strong>
+				La visualización se puede realizar de dos maneras:
+				<ul>
+					<li><strong>SDK nativo de reproducción:</strong> Utilizando el SDK y la URL de reproducción, se configuran reproductores que optimizados para latencias bajas.</li>
+					<li><strong>Consola de Amazon IVS:</strong> Desde la consola se puede seleccionar el canal que se quiere ver, pero puede incurrir en gastos.</li>
+				</ul>
+			</li>
+		</ol>
+		
+		<p>Los <strong>costes</strong> del servicio Amazon IVS están definidos <strong>por hora</strong>. El <strong>costo de entrada de vídeo</strong> depende del tipo de canal/calidad, pero en estándar disminuye
+		si se opta por el video de varias pistas. El de la <strong>salida</strong>, en cambio, es en función de la ubicación de los servidores a los que se conectan los espectadores y por niveles de uso.</p>
+		
+			<table>
+				<tr>
+					<td><p><strong>Costo de entrada de vídeo</strong></p></td>
+					<td><p><strong>Costo de salida de vídeo</strong></p></td>
+				</tr>
+				<tr>
+					<td><img width=600 src="../img/Ejercicio2/Tarea 2.6 - CosteEntradaVideo.jpg"></td>
+					<td><img width=600 src="../img/Ejercicio2/Tarea 2.6 - CosteSalidaVideo.jpg"></td>
+				</tr>
+			</table>
+		
+		<p>Para el <strong>cálculo del coste</strong> por minuto de una transmisión un stream HD en directo por 10.000 usuarios simultáneos se asumirá que todos los espectadores se conectan desde 
+			Europa, y que el nivel de uso es el primero (primeras 10.000 horas).</p>
+
+		<ul>
+			<li><strong>Entrada de video en HD:</strong> 0,85 USD/h</li>
+			<li><strong>Salida de video en directo en HD en Europa:</strong> 0,0720 USD/h * 10.000 espectadores = 720 USD</li>
+			<li><strong>TOTAL: 720,85 USD/h = 12,01416 USD/min</strong></li>
+		</ul>
+
     </div>
     <div class="footer">
 		<div class="left">

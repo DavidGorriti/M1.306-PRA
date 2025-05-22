@@ -74,11 +74,11 @@ li {
 	padding-left: 40px;
 }
 
-.content ul {
+.content ul, .content ol {
 	padding-left: 60px;
 }
 
-.content ul, .content p {
+.content ul, .content ol, .content p {
 	padding-right: 40px;
 	text-align: justify;
 }
