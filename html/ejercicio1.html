@@ -32,7 +32,7 @@
 			<li><strong>FPS:</strong> 60 fps</li>
 			<li><strong>Tasa de bits:</strong> 19765 kbps</li>
 			<li><strong>Estructura GOP:</strong> N = 60, M = 60. Dicha estructura no se ve en la información ofrecida por <i>Avidemux</i> o <i>MediaInfo</i>, 
-				pero contando los fotogramas se ha observado que la estrucutra es fija, que hay un fotograma I cada 60 fotogramas y que el resto son fotogramas B, sin ninguna P.</li>
+				pero contando los fotogramas se ha observado que la estructura es fija, que hay un fotograma I cada 60 fotogramas y que el resto son fotogramas B, sin ninguna P.</li>
 			<li><strong>Tamaño:</strong> 47,9 MB</li>
 		</ul>
 
@@ -42,7 +42,7 @@
 
 		<h3>Codificación y resolución para la publicación del vídeo en Web</h3>
 
-		<p>Partiendo de la información sobre los codes y su soporte por parte de los navegadores de 
+		<p>Partiendo de la información sobre los codecs y su soporte por parte de los navegadores de 
 			<a target="_blank" href="https://en.wikipedia.org/wiki/HTML_video#Browser_support">esta tabla</a>, las codificaciones elegidas inicialmente han sido AV1 y AVC/H.264.
 			De todas formas, como <i>Avidemux</i> no permite la codificación en AV1 (<a target="_blank" href="https://www.videoconverterfactory.com/convert-video/avidemux-av1.html">Does Avidemux Add Support for AV1?</a>),
 			finalmente se han <strong>elegido VP9</strong> (antecesor del AV1) <strong>y AVC/H.264</strong>.
@@ -52,7 +52,7 @@
 			<li>Entre las dos codificaciones se <strong>cubre el soporte en todos los navegadores principales</strong>, tal y como se puede observar en la tabla anteriormente mencionada.</li>
 			<li>Ambas <strong>codificaciones están optimizadas</strong> y consigues compresiones y calidades muy buenas.</li>
 			<li><strong>VP9</strong>, al igual que AV1, <strong>es abierto y sin patentes</strong>, y forma parte del formato WebM.</li>
-			<li><strong>AVC/H.264</strong> es el <strong>más extendido</strong> y aunque se un códec propietario, los navegadores puede reproducirlos sin costes adicionales.</li>
+			<li><strong>AVC/H.264</strong> es el <strong>más extendido</strong> y, aunque es un códec propietario, los navegadores pueden reproducirlos sin costes adicionales.</li>
 		</ul>
 
 		<p>La <strong>resolución seleccionada es 1080p (1920x1080)</strong>. Se trata de una resolución que equilibra de manera adecuada la calidad, el consumo de ancho de banda y el consumo de datos, 
@@ -123,35 +123,28 @@
 
 		<h2>Tarea 1.2: HTML5 vídeo</h2>
 
-		<p>En el reproductor de debajo, mediante el tag "&lt;video&gt;" y varios "&lt;source&gt;", se han <strong>configurado ambos formatos</strong>, WebM y MP4. En función del dispositivo y navegador en el que se abra la web, 
-			se <strong>seleccionará y reproducirá el primero que sea compatible</strong>.
+		<p>Mediante el tag "&lt;video&gt;" y varios "&lt;source&gt;", se han <strong>configurado ambos formatos</strong>, WebM y MP4. En función del dispositivo y navegador en el que se abra la web, 
+			se <strong>seleccionará y reproducirá el primero que sea compatible</strong> Este vídeo está disponible en el enlace mencionado en la Tarea 1.3.
 		</p>
-
-		<video width="600" poster="../img/VideoPoster.jpg" controls>
-			<source src="../video/Practica_VP9.webm" type="video/webm">
-			<source src="../video/Practica_H.264.mp4" type="video/mp4">
-			El navegador no soporta los formatos de vídeo configurados.
-		</video>
 
 		<p>A continuación, se enumeran algunas de las <strong>características</strong> del vídeo de HTML5:</p>
 
 		<ul>
 			<li><strong>Sencillez:</strong> El tag "&lt;video&gt;" permite incrustar un reproductor de vídeo de manera muy sencilla y con poco esfuerzo.</li>
-			<li><strong>Adaptabilidad y personalización: </strong> Mediante los múltiples opciones y atributos que ofrece es posible mostrar los controles del reproductor (play, pause, volumen, etc.), 
+			<li><strong>Adaptabilidad y personalización: </strong> Mediante las múltiples opciones y atributos que ofrece es posible mostrar los controles del reproductor (play, pause, volumen, etc.), 
 				incluir una imagen como poster (poster) o controlar su comportamiento (autoplay, muted). Además, mediante el uso de CSS, se puede personalizar su estilo.</li>
 			<li><strong>Diferentes fuentes:</strong> Se pueden definir varios vídeos mediante tags "&lt;source&gt;" y en función del dispositivo y navegador en el que se abra la web, 
 				se seleccionará y reproducirá el primero que sea compatible.</li>
-			<li><strong>Pistas de texto cronometratas:</strong> Utilizando tags "&lt;track&gt;" se pueden definir pistas de texto cronométradas de distinto tipo de manera sencilla (subtítulos, captions, descripciones, titulos de capítulos, etc.)</li>
+			<li><strong>Pistas de texto cronometradas:</strong> Utilizando tags "&lt;track&gt;" se pueden definir pistas de texto cronometradas de distinto tipo de manera sencilla (subtítulos, captions, descripciones, títulos de capítulos, etc.)</li>
 		</ul>
 
 		<h2>Tarea 1.3: Publicación del vídeo mediante CDN</h2>
 
-		<p>La versión publicada de esta web con las soluciones de la práctica está alojada en el CDN de Amazon <strong>AWS Amplify</strong>, y aunque en el reproductor de la 
-			<strong>tarea 1.2</strong> se puede ver el <strong>vídeo publicado</strong>, también se ha habilitado en este enlace: 
+		<p>El vídeo se ha alojado y publicado en el CDN de Amazon <strong>AWS Amplify</strong>, y está disponible en el siguiente enlace: 
 			<a target="_blank" href="https://main.d1seeg9m0l9f4q.amplifyapp.com/html/ejercicio1.3_video.html">https://main.d1seeg9m0l9f4q.amplifyapp.com/html/ejercicio1.3_video.html</a>
 		</P>
 		
-		<p>La <strong>reproducción</strong> del vídeo, tanto en desktop con conexión directa con cable, como en móvil con Wifi o 4G, es <strong>instantanea y sin interrupciones</strong>. 
+		<p>La <strong>reproducción</strong> del vídeo, tanto en desktop con conexión directa con cable, como en móvil con Wifi o 4G, es <strong>instantánea y sin interrupciones</strong>. 
 		Se ha observado que la descarga del vídeo en móvil ha necesitado más tiempo, pero como se realiza en pequeñas partes y se guardan en el buffer, la demora en el inicio es despreciable y su reproducción no se interrumpe.</p>
 
 		<p>La <strong>reproducción en móvil del vídeo original</strong> HEVC/H.265 de la tarea 1.1, en cambio, sí que <strong>se interrumpe</strong>, ya que es más pesada y necesita descargar más datos.</p>
@@ -163,17 +156,15 @@
 		<p>En el enlace <a target="_blank" href="https://main.d1seeg9m0l9f4q.amplifyapp.com/html/ejercicio1.4_video.html">https://main.d1seeg9m0l9f4q.amplifyapp.com/html/ejercicio1.4_video.html</a>
 		se ha publicado el mismo vídeo de la tarea anterior, pero con algunas <strong>funcionalidades</strong> que ofrece el vídeo de HTML:</p>
 
-		<p>En el vídeo de arriba se pueden observar algunas <strong>funcionalidades</strong> que ofrece el vídeo de HTML:</p>
 		<ul>
 			<li><strong>Poster:</strong> Se ha añadido una imagen como poster con la propiedad "poster". Con la reproducción automática es posible que no se vea, 
-				pero también está configurado en el resto de reproductores del ejercicio.</li>
+				pero también está configurado en el reproductor de la tarea 1.3.</li>
 			<li><strong>Controles:</strong> Con el atributo booleano "controls" se muestran los controles (play/pause, volumen, pantalla completa, etc.).</li>
 			<li><strong>Subtítulos:</strong> Se han añadido subtítulos con el tag "&lt;track&gt;".</li>
 			<li><strong>Sin sonido:</strong> Con la propiedad "muted" se ha configurado la reproducción sin volumen.</li>
 			<li><strong>Reproducción automática:</strong> Con la propiedad "autoplay" se ha activado la reproducción automática. Esta funcionalidad se activa siempre y cuando se use junto con la propiedad "muted".</li>
 			<li><strong>Carga diferida:</strong> Aunque no es exclusiva del vídeo (ya que se puede configurar también para imágenes, iframes, etc.), se ha activado la carga diferida con la propiedad "load=lazy". 
-				De esta forma, la carga del vídeo se retrasa hasta que el elemento "&lt;video&gt;" entra en el área visible del navegador, por lo que el vídeo no comienza a reproducirse 
-				hasta que el usuario baje hasta él. Es una técnica utilizada para evitar descargar datos innecesarios.
+				De esta forma, la carga del vídeo se retrasa hasta que el elemento "&lt;video&gt;" entra en el área visible del navegador. Es una técnica utilizada para evitar descargar datos innecesarios.
 			</li>
 			<li><strong>Texto a mostrar cuando no es posible cargar el vídeo:</strong> se ha configurado el texto "El navegador no soporta los formatos de vídeo configurados." para los casos en los que no es posible reproducir el vídeo.</li>
 		</ul>
@@ -206,7 +197,7 @@
 			<span>M1.306 - Plataformas de publicación y distribución<br>Práctica</span>
 		</div>
 		<div class="right">
-			<span>Gorriti Azkue, David<br>25/05/2025</span>
+			<span>Gorriti Azkue, David<br>26/05/2025</span>
 		</div>
     </div>
   </body>

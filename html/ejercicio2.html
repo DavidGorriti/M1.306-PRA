@@ -18,7 +18,7 @@
 		
 		<h2>Tarea 2.1: Codificación del vídeo</h2>
 
-		<p>El <strong>vídeo original</strong> utilizado en este ejercicio es <strong>el mismo del ejercicio 1, "Practica_H.265.mp4",</strong> cuyas caracterísitcas se pueden consultar en el apartado "Tarea 1.1: Codificación de los vídeos".</p>
+		<p>El <strong>vídeo original</strong> utilizado en este ejercicio es <strong>el mismo del ejercicio 1, "Practica_H.265.mp4",</strong> cuyas características se pueden consultar en el apartado "Tarea 1.1: Codificación de los vídeos".</p>
 		
 		<p>A continuación, se detallan las <strong>principales configuraciones realizadas en <i>Avidemux</i></strong> para obtener el vídeo "clip01.mkv" con el formato definido en el enunciado.</p>
 
@@ -74,7 +74,7 @@
 			<li><strong>Codec de audio:</strong> mpga</li>
 			<li><strong>Bitrate de vídeo:</strong> 800 kbps</li>
 			<li><strong>Bitrate de audio:</strong> 128 kbps</li>
-			<li><strong>Frecuencia de muestreo de audío:</strong> 44100 Hz</li>
+			<li><strong>Frecuencia de muestreo de audio:</strong> 44100 Hz</li>
 		</ul>
 		
 		<ul><li><strong>Receptor:</strong></li></ul>
@@ -86,20 +86,20 @@
 		<h3>VLC de recepción</h3>
 		<img width=1000 src="../img/Ejercicio2/Tarea 2.3 - Info receptor.jpg">
 
-		<p>Comparando la información del VLC de emisión con el de recpeción, se observa que el vídeo emitido ha sido transformado antes de ser recibido. Además, comprobando los datos
-			del VLC de recepciópn con las caracterísitcas de la transcodificación, se confirma que la <strong>codificación se realizar correctamente</strong>.</p>
+		<p>Comparando la información del VLC de emisión con el de recepción, se observa que el vídeo emitido ha sido transformado antes de ser recibido. Además, comprobando los datos
+			del VLC de recepción con las características de la transcodificación, se confirma que la <strong>codificación se realiza correctamente</strong>.</p>
 			
 		<p>Por un lado, en la pestaña de información del coded se puede ver que <strong>los codecs de audio y vídeo, el bitrate de audio y la frecuencia de muestreo de audio coinciden</strong> con la 
 			transcodificación definida. Por otro lado, en la pestaña de estadísticas, se observa que el <strong>valor medio de la tasa de bits del contenido</strong> es 980 kbps, <strong>cercano a los 928 kbps (800 de vídeo + 128 de audio) definidos</strong>.</p>
 
 		<h2>Tarea 2.4: Pausar VLC de emisión</h2>
 
-		<p>Tras pausar el VL emisor, el vídeo del receptor tarda al rededor de <strong>3 segundos</strong> en parar. Esto se debe a varios factores.</p> 
+		<p>Tras pausar el VL emisor, el vídeo del receptor tarda alrededor de <strong>3 segundos</strong> en parar. Esto se debe a varios factores.</p> 
 		
 		<p>Una de las razones principales es el <strong>buffer de datos del receptor</strong>. El receptor mantiene un buffer de datos para amortiguar el efecto del jitter y no pausar el vídeo en los momentos en que la llegada de datos es más lenta.
 		Cuando el emisor deja de enviar datos, el receptor no parará hasta que se vacíe su buffer y no tenga más datos de reproducir.</p>
 
-		<p>Otros factor que puede afectar son los <strong>paquetes que ya están en tránsito</strong> a cuando se pausa la emisión. El receptor puede recibir paquetes enviados justo antes de pausar la emisión,
+		<p>Otro factor que puede afectar son los <strong>paquetes que ya están en tránsito</strong> cuando se pausa la emisión. El receptor puede recibir paquetes enviados justo antes de pausar la emisión,
 			añadirlos al buffer y reproducirlos, aumentando el tiempo.
 		</p>
 		
@@ -107,11 +107,11 @@
 
 		<img width=1500 src="../img/Ejercicio2/Tarea 2.5 - Emisor-Receptor.jpg">
 
-		<p>Para el <strong>cálculo de la compresión</strong> que se está realizando se ha partiendo de los datos estadísticos del streaming.</p>
+		<p>Para el <strong>cálculo de la compresión</strong> que se está realizando se ha partido de los datos estadísticos del streaming.</p>
 
-		<p>El <strong>tamaño del vídeo emitido</strong> se ha extraído de "Tamaño de datos del medio" de las estadísticas de emisión, 12.724 KiB = <strong>13.029.376 B</strong></p>
+		<p>El <strong>tamaño del vídeo emitido</strong> se ha extraído de "Tamaño de datos del medio" de las estadísticas justo al acabar la emisión, 12.724 KiB = <strong>13.029.376 B</strong></p>
 
-		<p>El <strong>tamaño del vídeo recibido</strong>, en cambio, al no disoner de dicha información, se ha calculado a partir de la "Tasa de bits del contenido". 
+		<p>El <strong>tamaño del vídeo recibido</strong>, en cambio, al no disponer de dicha información, se ha calculado a partir de la "Tasa de bits del contenido". 
 			Dicho valor varía a lo largo de la emisión, pero los 980 kbps, teniendo en cuenta los datos de la transcodificación, es una tasa razonable. 
 			Como el vídeo dura 20 segundos, el tamaño del vídeo recibido es 980 kbps * 20 s = 19.600 kb -> 19.600 kb * 1.000 / 8 = <strong>2.450.000 B</strong>.</p>
 
@@ -125,14 +125,14 @@
 			distribuyendo videos a escala en una amplia gama de dispositivos y plataformas y creando experiencias interactivas integradas en sitios web y aplicaciones.
 		</p>
 
-		<p>La <strong>entrega de contenido</strong> se puede realizar con dos <strong>formas distintas</strong>, que afectan directamente a su latencia 
+		<p>La <strong>entrega de contenido</strong> se puede realizar de dos <strong>formas distintas</strong>, que afectan directamente a su latencia 
 			(momento en que la cámara captura una transmisión hasta que aparece en la pantalla del espectador):</p>
 		<ul>
 			<li><strong>Latencia baja:</strong> Mediante los canales de IVS, que entregan el vídeo con una latencia inferior a 5 segundos.</li>
-			<li><strong>Latencia en tiempo real:</strong> Mediante las fases de IVS la latencia es inferior a 300ms. Si la fase se transmite a un canal, se entregara con latencia baja.</li>
+			<li><strong>Latencia en tiempo real:</strong> Mediante las fases de IVS la latencia es inferior a 300ms. Si la fase se transmite a un canal, se entregará con latencia baja.</li>
 		</ul>
 
-		<p>En cualquier caso, son latencias mucho más bajas que un transmisión OTT (over-the-top) tradicional, en las que pueden llegar a ser de hasta 30 segundos.</p>
+		<p>En cualquier caso, son latencias mucho más bajas que una transmisión OTT (over-the-top) tradicional, en las que pueden llegar a ser de hasta 30 segundos.</p>
 
 		<p>Aunque el <strong>"plano de datos" es global</strong> y las retransmisiones se pueden ver de forma global en todo el mundo, el <strong>"plano de control"
 			es regional</strong>. Es decir, la consola de Amazon IVS, la API y los recursos son independientes en cada región y el usuario debe indicar donde quiere crearlos.
@@ -149,7 +149,7 @@
 		<p>Se puede y se recomienda utilizar <strong>diferentes niveles de permisos</strong> para las distintas tareas que se pueden realizar en la plataforma:</p>
 		<ul>
 			<li>
-				<strong>Usuario raíz:</strong> Es el usuario propio de la cuenta AWS y se crea automática al registrar una cuenta. Tiene accesos a todos los servicios y recursos de AWS.
+				<strong>Usuario raíz:</strong> Es el usuario propio de la cuenta AWS y se crea automática al registrar una cuenta. Tiene acceso a todos los servicios y recursos de AWS.
 				Se recomiendo utilizarlo solo para tareas que requieran permisos de raíz. 
 			</li>
 			<li>
@@ -169,7 +169,7 @@
 			</li>
 			<li>
 				<strong>Configurar usuarios:</strong>
-				Tal y como se ha indicade anteriornmente, hay que configurar el usuario raíz, el usuario administrativo y los permisos de IAM para una correcta gestión de usuarios y permisos.
+				Tal y como se ha indicado anteriormente, hay que configurar el usuario raíz, el usuario administrativo y los permisos de IAM para una correcta gestión de usuarios y permisos.
 			</li>
 			<li>
 				<strong>Crear un canal:</strong>
@@ -192,7 +192,7 @@
 					Está pensado para testing.</li>
 					<li><strong>Otros software y codificadores de streaming:</strong> Se pueden utilizar otros codificadores mientras soporten los protocolos RTMP, RTMPS o SRT.
 					Por ejemplo, streaming con "OBS Studio" utilizando RTMPS o SRT o envío de videos grabado con "FFmpeg" utilizando RTMPS o SRT. En cualquier caso, es necesario
-					configurar, entre otro parámetros, la clave de transmisión, la resolución de salida y el bitrate.
+					configurar, entre otros parámetros, la clave de transmisión, la resolución de salida y el bitrate.
 					</li>
 				</ul>
 			</li>
@@ -206,8 +206,8 @@
 			</li>
 		</ol>
 		
-		<p>Los <strong>costes</strong> del servicio Amazon IVS están definidos <strong>por hora</strong>. El <strong>costo de entrada de vídeo</strong> depende del tipo de canal/calidad, pero en estándar disminuye
-		si se opta por el video de varias pistas. El de la <strong>salida</strong>, en cambio, es en función de la ubicación de los servidores a los que se conectan los espectadores y por niveles de uso.</p>
+		<p>Los <strong>costes</strong> del servicio Amazon IVS están definidos <strong>por hora</strong>. El <strong>costo de entrada de vídeo</strong> depende del tipo de canal/calidad. 
+			El de <strong>salida</strong>, en cambio, es en función de la ubicación de los servidores a los que se conectan los espectadores y por niveles de uso.</p>
 		
 			<table>
 				<tr>
@@ -220,7 +220,7 @@
 				</tr>
 			</table>
 		
-		<p>Para el <strong>cálculo del coste</strong> por minuto de una transmisión un stream HD en directo por 10.000 usuarios simultáneos se asumirá que todos los espectadores se conectan desde 
+		<p>Para el <strong>cálculo del coste</strong> por minuto de una transmisión de un stream HD en directo por 10.000 usuarios simultáneos se asumirá que todos los espectadores se conectan desde 
 			Europa, y que el nivel de uso es el primero (primeras 10.000 horas).</p>
 
 		<ul>
@@ -235,7 +235,7 @@
 			<span>M1.306 - Plataformas de publicación y distribución<br>Práctica</span>
 		</div>
 		<div class="right">
-			<span>Gorriti Azkue, David<br>25/05/2025</span>
+			<span>Gorriti Azkue, David<br>26/05/2025</span>
 		</div>
     </div>
   </body>
